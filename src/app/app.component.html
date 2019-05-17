@@ -1,0 +1,45 @@
+
+<!-- header with title and two buttons -->
+
+<mat-toolbar>
+  <mat-toolbar-row>
+    <div class="header">
+      <p class="f-left title">Dynamic Modal</p>
+      <div class="f-right auth-buttons">
+        <span><button mat-raised-button color="primary" class="f-right"
+                  [routerLink]="['/', {outlets: { modal: 'signUp' } } ]"
+                  i18n><b> Sign Up </b></button></span>
+        <span><button mat-raised-button color="primary" class="f-right"
+                      [routerLink]="['/', {outlets: { modal: 'signIn' } } ]"
+                      i18n> <b>Sign In</b></button></span>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- list of organizations -->
+
+<div class="orgList">
+  <mat-grid-list cols="3" rowHeight="2:1">
+    <div *ngFor="let org of organizations; let idx = index">
+      <mat-grid-tile *ngIf="idx <= 5" class="grid-tile">
+        <div>
+          <div class="org-title">{{org.login}}</div>
+          <div><img src="{{org.avatar_url}}"></div>
+          <div class="desc">Lorem Ipsum is simply dummy text of the printing and
+            typesetting industry. Lorem Ipsum has been the industry's standard
+            dummy text ever since the 1500s, when an unknown printer took a
+            galley of type and scrambled it to make a type specimen book.
+          </div>
+        </div>
+      </mat-grid-tile>
+    </div>
+  </mat-grid-list>
+</div>
+
+<!-- routing stuff -->
+
+<div>
+  <router-outlet></router-outlet>
+  <router-outlet name="modal"></router-outlet>
+</div>
